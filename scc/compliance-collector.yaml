@@ -81,7 +81,9 @@ spec:
       default: https://cloud.ibm.com
     - name: repository
       description: the git repo   
-
+    - name: ibmcloud-apikey-secret-key
+      description: field in the secret that contains the api key used to login to ibmcloud
+      default: apikey
 
   workspaces:
     - name: artifacts
