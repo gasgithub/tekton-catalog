@@ -297,7 +297,9 @@ spec:
         # set up helpers
         #
         source /scripts/retry_command.sh
-        TOKEN=$(cat /runtime-secrets/$(params.git-api-token-key))
+        echo "GIT_TOKEN : $GIT_TOKEN"
+        # TOKEN=$(cat /runtime-secrets/$(params.git-api-token-key))
+        TOKEN=$GIT_TOKEN
         EVIDENCE_REPO_NAME=${EVIDENCE_REPO_URL##*/}
         export EVIDENCE_REPO_NAME=${EVIDENCE_REPO_NAME%.git}
         EVIDENCE_REPO_ORG=${EVIDENCE_REPO_URL%/*}
