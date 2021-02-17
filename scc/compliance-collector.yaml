@@ -276,6 +276,13 @@ spec:
     - name: process-and-upload
       image: wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/ibm-compliance-automation:1.1.6@sha256:42db55c890a5a12322954568c801a8bdf324474744e7aa66c9b61ae8f17749f3
       workingDir: $(workspaces.artifacts.path)
+      env:
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: $(params.continuous-delivery-context-secret)
+              key: $(params.ibmcloud-apikey-secret-key)
+              optional: true      
       volumeMounts:
         - mountPath: /scripts
           name: retry-command
@@ -321,7 +328,8 @@ spec:
         source /steps/step.variables
         source /scripts/retry_command.sh
         source /compliance-helper-scripts/create_pipeline_task_url.sh
-        export IBMCLOUD_API_KEY=$(cat "/secrets/$(params.toolchain-apikey-secret-key)")
+        # export IBMCLOUD_API_KEY=$(cat "/secrets/$(params.toolchain-apikey-secret-key)")
+        export IBMCLOUD_API_KEY=$API_KEY
         echo "export IBMCLOUD_API_KEY=${IBMCLOUD_API_KEY}" >> /steps/step.variables
         export COS_API_KEY="$IBMCLOUD_API_KEY"
         echo "export COS_API_KEY=${COS_API_KEY}" >> /steps/step.variables
