@@ -296,6 +296,7 @@ spec:
         #
         # set up helpers
         #
+        source /steps/next-step-env.properties
         source /scripts/retry_command.sh
         echo "GIT_TOKEN : $GIT_TOKEN"
         # TOKEN=$(cat /runtime-secrets/$(params.git-api-token-key))
