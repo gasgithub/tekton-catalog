@@ -274,7 +274,7 @@ spec:
           name: steps-volume
 
     - name: process-and-upload
-      image: wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/ibm-compliance-automation:1.1.6@sha256:42db55c890a5a12322954568c801a8bdf324474744e7aa66c9b61ae8f17749f3
+      image: wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/ibm-compliance-automation:1.3.3@sha256:8c0dc655dedaa5c543860adcf725e196727197808a8384769b1cee55a366ed01
       workingDir: $(workspaces.artifacts.path)
       env:
         - name: API_KEY
