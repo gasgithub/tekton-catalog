@@ -177,6 +177,13 @@ spec:
           # if [ "$(params.include-cd-evidence)" == 1 ]; then
           #   PREFIX_LIST+=",cd/$PIPELINE_RUN_ID"
           # fi
+          
+          if [ -z CI_PIPELINE_RUN_ID ]; then
+            echo "No CI_PIPELINE_RUN_ID using current"
+            PREFIX_LIST="ci/$PIPELINE_RUN_ID,cd/$PIPELINE_RUN_ID"
+            echo $PREFIX_LIST
+          fi
+          
           export EVIDENCE_REPO_NAME=$(echo "$EVIDENCE_REPO_URL" | cut -f5 -d/)
           export EVIDENCE_REPO_ORG=$(echo "$EVIDENCE_REPO_URL" | cut -f4 -d/)
           TEMP_JSON_PATH="$(echo $APP_NAME | sed 's/\//_/g')_temp_sum.json"
