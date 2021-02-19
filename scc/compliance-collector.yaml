@@ -260,7 +260,7 @@ spec:
           echo "GIT_TOKEN=$GIT_TOKEN" >> /steps/next-step-env.properties
           
           echo "### saving secret"
-          echo -n "$GIT_TOKEN" >> /"$(workspaces.secrets.path)/$(params.git-api-token-key)"
+          echo -n "$GIT_TOKEN" > /"$(workspaces.secrets.path)/$(params.git-api-token-key)"
           
           echo "GIT_SERVICE_TYPE=$GIT_SERVICE_TYPE" >> /steps/next-step-env.properties
           echo "GIT_ID=$GIT_ID" >> /steps/next-step-env.properties
