@@ -134,6 +134,9 @@ spec:
         FULL_SUMMARY="{}"
         SUMMARY_TO_UPLOAD_PATH="./summary.json"
         DATE=$(date +%FT%TZ)
+        echo "params.use-delta-as-base: $(params.use-delta-as-base)"
+        echo "Contents of $(workspaces.artifacts.path)"
+        ls -la $(workspaces.artifacts.path)
         APPS="$(cat "$(workspaces.artifacts.path)/$(params.inventory-entries-list-path)")"
         if [ "$(params.use-delta-as-base)" == 1 ]; then
           APPS="$(cat "$(workspaces.artifacts.path)/$(params.deployment-delta-list-path)")"
