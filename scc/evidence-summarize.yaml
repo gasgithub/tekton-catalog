@@ -178,7 +178,7 @@ spec:
           #   PREFIX_LIST+=",cd/$PIPELINE_RUN_ID"
           # fi
           
-          if [ -z CI_PIPELINE_RUN_ID ]; then
+          if [ -z $CI_PIPELINE_RUN_ID ]; then
             echo "No CI_PIPELINE_RUN_ID using current"
             PREFIX_LIST="ci/$PIPELINE_RUN_ID,cd/$PIPELINE_RUN_ID"
             echo $PREFIX_LIST
