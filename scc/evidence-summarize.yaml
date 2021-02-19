@@ -127,7 +127,13 @@ spec:
           export COS_API_KEY=$(cat "/secrets/$(params.toolchain-apikey-secret-key)")
         fi
         export NL=$'\n'
-        export GHE_TOKEN=$(cat "$(workspaces.secrets.path)/$(params.git-api-token-key)")
+        
+        source /steps/next-step-env.properties
+        echo "GIT_TOKEN : $GIT_TOKEN"
+        # TOKEN=$(cat /runtime-secrets/$(params.git-api-token-key))
+        export GHE_TOKEN=$GIT_TOKEN
+        # export GHE_TOKEN=$(cat "$(workspaces.secrets.path)/$(params.git-api-token-key)")
+        
         INVENTORY_REPO=$(echo "$INVENTORY_URL" | cut -f5 -d/)
         INVENTORY_ORG=$(echo "$INVENTORY_URL" | cut -f4 -d/)
         FULL_SUMMARY_PATH="./evidence_summary.json"
