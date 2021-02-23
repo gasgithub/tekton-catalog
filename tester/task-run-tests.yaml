@@ -29,6 +29,8 @@ spec:
   results:
     - name: tests-exit-code
       description: The exit-code of the tests script
+    - name: tests-exit-message
+      description: The exit message (succcess or failure)    
     - name: test-result-file-paths
       description: semi-colon list of test result output file paths
     - name: test-types
@@ -93,9 +95,11 @@ spec:
 
         if /steps/tests-script.sh; then
           echo -n $? > $(results.tests-exit-code.path)
+          echo -n "success" > $(results.tests-exit-message.path)
           echo "Tests executed successfully"
         else
           echo -n $? > $(results.tests-exit-code.path)
+          echo -n "failure" > $(results.tests-exit-message.path)
           # Failures in the tests execution
           if [ "$(params.fail-on-test-errors)" == "true" ]; then
             echo "Tests failed [exit code: $(cat $(results.tests-exit-code.path))]"
