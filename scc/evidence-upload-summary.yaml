@@ -65,11 +65,13 @@ spec:
             trap env EXIT
             set -x
           fi
+          ls -la
           git config --global user.email "tekton@example.com"
           git config --global user.name "Tekton"
           mkdir -p $(workspaces.evidence-locker.path)/$(params.evidence-repo-path)/raw/cd/$PIPELINE_RUN_ID
           cp "$(params.evidence-summary-path)" $(workspaces.evidence-locker.path)/$(params.evidence-repo-path)/raw/cd/$PIPELINE_RUN_ID
           cd $(workspaces.evidence-locker.path)/$(params.evidence-repo-path)/
+          ls -la
           git add raw/cd/$PIPELINE_RUN_ID/*
           git commit -q -m "upload evidence summary for $PIPELINE_RUN_ID"
           retries="$(params.retry-count)"
