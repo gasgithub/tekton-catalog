@@ -163,7 +163,7 @@ spec:
         #
         # set up helpers
         #
-        # IBMCLOUD_API_KEY=$(cat "/secrets/$(params.ibmcloud-api-key-secret-key)")
+        # IBMCLOUD_API_KEY=$(cat "/secrets/$(params.ibmcloud-api-key-secret)")
         export IBMCLOUD_API_KEY=$API_KEY        
         # Default build number if needed
         if [ -z "$BUILD_NUMBER" ]; then
