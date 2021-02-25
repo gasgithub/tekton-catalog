@@ -23,7 +23,7 @@ spec:
     - name: continuous-delivery-context-secret
       description: name of the configmap containing the continuous delivery pipeline context secrets
       default: "secure-properties"
-    - name: ibmcloud-api-key-secret-key
+    - name: ibmcloud-api-key-secret
       description: field in the secret that contains the api key used to access toolchain and DOI instance
       default: "ibmcloud-api-key"
     - name: ibmcloud-api
@@ -115,7 +115,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: $(params.continuous-delivery-context-secret)
-              key: $(params.ibmcloud-apikey-secret-key)
+              key: $(ibmcloud-api-key-secret)
               optional: true            
         - name: BREAK_GLASS
           valueFrom:
