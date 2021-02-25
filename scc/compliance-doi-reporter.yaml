@@ -216,6 +216,11 @@ spec:
           RESULT="success"
           fi
           EVIDENCE_DATA_FILE=$(create_doi_evidence_data "$TASK_NAME" "$RESULT")
+          
+          echo "change app name $APP_NAME"
+          APP_NAME=${APP_NAME##*/}
+          export APP_NAME=${APP_NAME%.git}
+          echo "changed app name $APP_NAME"
           #
           # Publish data to DOI
           #
