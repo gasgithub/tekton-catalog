@@ -115,7 +115,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: $(params.continuous-delivery-context-secret)
-              key: $(ibmcloud-api-key-secret)
+              key: $(params.ibmcloud-api-key-secret)
               optional: true            
         - name: BREAK_GLASS
           valueFrom:
