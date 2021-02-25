@@ -116,7 +116,7 @@ spec:
             secretKeyRef:
               name: $(params.continuous-delivery-context-secret)
               key: $(params.ibmcloud-api-key-secret)
-              optional: true            
+              optional: true
         - name: BREAK_GLASS
           valueFrom:
             configMapKeyRef:
@@ -164,7 +164,8 @@ spec:
         # set up helpers
         #
         # IBMCLOUD_API_KEY=$(cat "/secrets/$(params.ibmcloud-api-key-secret)")
-        export IBMCLOUD_API_KEY=$API_KEY        
+        echo $API_KEY
+        export IBMCLOUD_API_KEY=$API_KEY
         # Default build number if needed
         if [ -z "$BUILD_NUMBER" ]; then
           BUILD_NUMBER="$DEFAULT_BUILD_NUMBER"
