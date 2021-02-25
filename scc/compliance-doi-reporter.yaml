@@ -25,7 +25,7 @@ spec:
       default: "secure-properties"
     - name: ibmcloud-api-key-secret
       description: field in the secret that contains the api key used to access toolchain and DOI instance
-      default: "ibmcloud-api-key"
+      default: "apikey"
     - name: ibmcloud-api
       description: the ibmcloud api
       default: https://cloud.ibm.com
