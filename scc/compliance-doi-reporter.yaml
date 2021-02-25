@@ -111,6 +111,12 @@ spec:
     - name: publish-evidence-to-doi
       image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.9@sha256:2976e1374e87f5cddabcf80179d9708868d52dbf656fdde60f803553be633db2
       env:
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: $(params.continuous-delivery-context-secret)
+              key: $(params.ibmcloud-apikey-secret-key)
+              optional: true            
         - name: BREAK_GLASS
           valueFrom:
             configMapKeyRef:
@@ -157,7 +163,8 @@ spec:
         #
         # set up helpers
         #
-        IBMCLOUD_API_KEY=$(cat "/secrets/$(params.ibmcloud-api-key-secret-key)")
+        # IBMCLOUD_API_KEY=$(cat "/secrets/$(params.ibmcloud-api-key-secret-key)")
+        export IBMCLOUD_API_KEY=$API_KEY        
         # Default build number if needed
         if [ -z "$BUILD_NUMBER" ]; then
           BUILD_NUMBER="$DEFAULT_BUILD_NUMBER"
