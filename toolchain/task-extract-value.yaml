@@ -43,6 +43,9 @@ spec:
             env
             trap env EXIT
             set -x
+            ls -la
+            ls -la /cd-config
+            cat /cd-config/$(params.config-map-key)
           fi
 
           jq $([ "$RAW" == 1 ] && echo -r) '$(params.expression)' /cd-config/$(params.config-map-key) | tr -d '\n' | tee $(results.extracted-value.path)
