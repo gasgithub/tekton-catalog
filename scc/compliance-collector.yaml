@@ -333,7 +333,7 @@ spec:
         echo "export ISSUE_REPO_NAME=${ISSUE_REPO_NAME}" >> /steps/step.variables
         echo "export ISSUE_REPO_ORG=${ISSUE_REPO_ORG}" >> /steps/step.variables
         
-        #echo "export GH_URL=${GH_URL}" >> /steps/step.variables
+        echo "export GH_URL=${GH_URL}" >> /steps/step.variables
         
         source /steps/step.variables
         source /scripts/retry_command.sh
@@ -550,6 +550,7 @@ spec:
         fi
         source /steps/step.variables
         source /scripts/retry_command.sh
+        echo "GH_URL: {GH_URL}"
         ls
         BACKEND_PARAMETER="--backend=git"
         if [[ \
