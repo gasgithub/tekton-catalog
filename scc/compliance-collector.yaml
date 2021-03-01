@@ -526,7 +526,7 @@ spec:
         -o pipeline-run-data.json \
         "https://api.${REGION}.devops.cloud.ibm.com/v1/tekton-pipelines/$PIPELINE_ID/runs/${PIPELINE_RUN_ID}"
     - name: upload-pipeline-response
-      image: wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/ibm-compliance-automation:1.1.1@sha256:d244f8807f6f777e412d084f7c6192019664d5cfa780cc251701943c657220df
+      image: wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/ibm-compliance-automation:1.3.3@sha256:8c0dc655dedaa5c543860adcf725e196727197808a8384769b1cee55a366ed01
       workingDir: $(workspaces.artifacts.path)
       volumeMounts:
         - mountPath: /steps
@@ -550,7 +550,7 @@ spec:
         fi
         source /steps/step.variables
         source /scripts/retry_command.sh
-        echo "GH_URL: {GH_URL}"
+        echo "GH_URL: ${GH_URL}"
         ls
         BACKEND_PARAMETER="--backend=git"
         if [[ \
