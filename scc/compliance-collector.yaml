@@ -312,8 +312,8 @@ spec:
         echo "GIT_TOKEN : $GIT_TOKEN"
         # TOKEN=$(cat /runtime-secrets/$(params.git-api-token-key))
         TOKEN=$GIT_TOKEN
-        #GH_URL=https://us-south.git.cloud.ibm.com/api/v4
-        #export GH_URL=${GH_URL}
+        GH_URL=https://api.github.com
+        export GH_URL=${GH_URL}
         
         EVIDENCE_REPO_NAME=${EVIDENCE_REPO_URL##*/}
         export EVIDENCE_REPO_NAME=${EVIDENCE_REPO_NAME%.git}
