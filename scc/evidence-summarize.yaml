@@ -136,8 +136,8 @@ spec:
         # export GHE_TOKEN=$GIT_TOKEN
         export GHE_TOKEN=$(cat "$(workspaces.secrets.path)/$(params.git-api-token-key)")
         
-        GH_URL=https://api.github.com
-        export GH_URL=${GH_URL}
+        #GH_URL=https://api.github.com
+        #export GH_URL=${GH_URL}
                 
         INVENTORY_REPO=$(echo "$INVENTORY_URL" | cut -f5 -d/)
         INVENTORY_ORG=$(echo "$INVENTORY_URL" | cut -f4 -d/)
