@@ -312,8 +312,8 @@ spec:
         echo "GIT_TOKEN : $GIT_TOKEN"
         # TOKEN=$(cat /runtime-secrets/$(params.git-api-token-key))
         TOKEN=$GIT_TOKEN
-        GH_URL=https://api.github.com
-        export GH_URL=${GH_URL}
+        #GH_URL=https://api.github.com
+        #export GH_URL=${GH_URL}
         
         EVIDENCE_REPO_NAME=${EVIDENCE_REPO_URL##*/}
         export EVIDENCE_REPO_NAME=${EVIDENCE_REPO_NAME%.git}
@@ -333,7 +333,7 @@ spec:
         echo "export ISSUE_REPO_NAME=${ISSUE_REPO_NAME}" >> /steps/step.variables
         echo "export ISSUE_REPO_ORG=${ISSUE_REPO_ORG}" >> /steps/step.variables
         
-        echo "export GH_URL=${GH_URL}" >> /steps/step.variables
+        #echo "export GH_URL=${GH_URL}" >> /steps/step.variables
         
         source /steps/step.variables
         source /scripts/retry_command.sh
