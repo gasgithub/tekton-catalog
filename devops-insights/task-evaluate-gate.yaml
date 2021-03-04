@@ -100,6 +100,11 @@ spec:
         else
           FORCE_DECISION=""
         fi
+        
+        echo "change app name $APP_NAME"
+        APP_NAME=${APP_NAME##*/}
+        export APP_NAME=${APP_NAME%.git}
+        echo "changed app name $APP_NAME"        
 
         export TOOLCHAIN_ID=${TOOLCHAIN_ID} # for doi plugin
         ibmcloud login --apikey ${IBM_CLOUD_API_KEY} -a ${IBM_CLOUD_API} --no-region
